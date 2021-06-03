@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20.0dip">
+
+        <TextView
+            android:textSize="25.0sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/text_view_driver"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:text="@string/text_view"
+            android:textAllCaps="false"
+            android:fontFamily="@font/roboto_bold" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip">
+
+            <TextView
+                android:textSize="17.0sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:layout_gravity="center"
+                android:id="@+id/lane_hint"
+                android:padding="10.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="0.0dip"
+                android:text="@string/lane"
+                android:textAllCaps="false"
+                android:fontFamily="@font/roboto_bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40.0dip">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:textColorHint="@color/black"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/driver_hint"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="2.0dip"
+                app:boxStrokeWidthFocused="3.0dip"
+                app:startIconTint="@color/black"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="17.0sp"
+                    android:textColor="@color/black"
+                    android:id="@+id/driver_name"
+                    android:padding="15.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0.0dip"
+                    android:maxLength="17"
+                    android:inputType="text"
+                    android:fontFamily="@font/roboto_light" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip">
+            <com.google.android.material.button.MaterialButton
+                android:layout_gravity="right"
+                android:id="@id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10.0dip"
+                android:text="add"
+                android:textAllCaps="false"
+                app:icon="@drawable/baseline_add_black_18dp" />
+            <com.google.android.material.button.MaterialButton
+                android:layout_gravity="right"
+                android:id="@+id/removes"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:text="remove"
+                android:textAllCaps="false"
+                app:icon="@drawable/sub" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip">
+            <TextView
+                android:textSize="20.0sp"
+                android:textStyle="normal"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:id="@+id/driver_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.0dip"
+                android:text=""
+                android:fontFamily="@font/roboto_regular" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip">
+
+            <Button
+                android:id="@id/button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50.0dip"
+                android:text="@string/button1"
+                style="@style/Widget.AppCompat.Button" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

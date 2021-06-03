@@ -1,0 +1,48 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.ActionMenuView
+                android:background="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_Layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:tabContentStart="40.0dip"
+            app:tabMode="scrollable" />
+        <androidx.viewpager.widget.ViewPager
+
+            android:id="@+id/pager"
+            android:background="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" />
+
+        <FrameLayout
+            android:id="@+id/bottom_tab"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navi"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:menu="@menu/bottom_navigation_menu" />
+        </FrameLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+</LinearLayout>

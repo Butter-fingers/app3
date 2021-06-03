@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Rank">Register Name, Rank and lane(s)</string>
+    <string name="Rank2">Enter Username</string>
+    <string name="Rank3">Enter Rank name</string>
+    <string name="Rank4">Enter Lane name</string>
+    <string name="app_name">Scouf</string>
+    <string name="btn">Add</string>
+    <string name="btn_1">Edit</string>
+    <string name="btn_2">NEXT</string>
+    <string name="button1">NEXT</string>
+    <string name="button2">LOG IN</string>
+    <string name="button3">SIGN UP</string>
+    <string name="driver_hint">Add driver/plate name</string>
+    <string name="eg">Example: MAFIKENG MAIN RANK</string>
+    <string name="eg_2">Example: KLERKSDROP</string>
+    <string name="float_1">START</string>
+    <string name="float_2">SORT</string>
+    <string name="float_3">LOCK</string>
+    <string name="float_4">COPY</string>
+
+    <string name="hint1">Enter Phone Number</string>
+    <string name="hint2">Verification Code</string>
+    <string name="hint3">Enter the code</string>
+    <string name="lane">Select a lane:</string>
+    <string name="lock_1">Select driver(s) to lock.</string>
+    <string name="tab">Tab1</string>
+    <string name="tab2">Tab2</string>
+    <string name="tab3">Tab3</string>
+    <string name="tab4">Tab4</string>
+    <string name="tab5">Tab5</string>
+    <string name="text1">CONTACT NUMBER</string>
+    <string name="text2">Verify Phone Number</string>
+    <string name="text3">We will send an SMS message to verify your phone Number.</string>
+    <string name="text4">Carrier SMS charges may apply.</string>
+    <string name="text5">An SMS with 6-digit code is sent to</string>
+    <string name="text6">Verifying</string>
+    <string name="text7">Wrong number?.</string>
+    <string name="text_view">Add drivers</string>
+    <string name="time">Time</string>
+    <string name="title">Is this your number?</string>
+
+    <string name="tooltip">add lane to the list.</string>
+    <string name="tooltip2">add driver to the lane.</string>
+    <string name="tooltip2_2">remove driver.</string>
+    <string name="tooltip_2">remove lane.</string>
+    <string name="sort_1">Select the last driver.</string>
+</resources>

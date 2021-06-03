@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "923363843103",
+    "project_id": "release-12eb0",
+    "storage_bucket": "release-12eb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923363843103:android:8996b1d02eee278b84892a",
+        "android_client_info": {
+          "package_name": "com.taxi.scouf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923363843103-4akijhq0pfrqrol0blnpnc3ea72kob03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taxi.scouf",
+            "certificate_hash": "6714965891757e933c406e00b4c503dc89b668bc"
+          }
+        },
+        {
+          "client_id": "923363843103-q11v2n0j01pfk0hbdqd4qunlt9b896re.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taxi.scouf",
+            "certificate_hash": "072210fea3db27eb17afd29d7cd3045c29f7b535"
+          }
+        },
+        {
+          "client_id": "923363843103-sgr8incq0a0elgjhovnc4p2tnst2763c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3RKyRFpGsSKSwsIF3wt3EIVpuD2IEwIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923363843103-sgr8incq0a0elgjhovnc4p2tnst2763c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
