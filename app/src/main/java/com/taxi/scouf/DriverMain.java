@@ -218,10 +218,11 @@ public class DriverMain extends AppCompatActivity {
 
                 int sec = 0;
 
-                for (int i = 0; i < array.size(); i++ ) {
-                    if (!array2.get(i).isEmpty()) {
-                        sec = fi + 1;
 
+                for (int i = 0; i < array.size(); i++ ) {
+                    boolean ch = !array2.get(i).isEmpty();
+                    if (ch) {
+                        sec = fi + 1;
                     }
 
                 }
