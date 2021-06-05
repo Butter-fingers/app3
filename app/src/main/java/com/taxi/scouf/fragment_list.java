@@ -73,11 +73,12 @@ public class fragment_list extends Fragment {
 
         if (getArguments() != null) {
             arrayList = getArguments().getStringArrayList("drivers");
+            System.out.println("Arguments: "+ arrayList);
             //put in numbers
             for (int i = 0; i < arrayList.size(); i++ ) {
                 arrayList.set(i,(i+1) + ". " +arrayList.get(i));
             }
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, arrayList);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_2, arrayList);
             //listView.setAdapter(
             listView.setAdapter(arrayAdapter);
 

@@ -22,6 +22,7 @@ public class Database extends SQLiteOpenHelper {
     private String TABLE = "DRIVER";
     String name;
     int ver;
+    Cursor cursor;
 
     public Database(@Nullable Context context) {
         super(context, "Scouf", null, 1);
@@ -69,7 +70,7 @@ public class Database extends SQLiteOpenHelper {
         ArrayList<String> arrayList2 = new ArrayList();
         SQLiteDatabase db = getReadableDatabase();
         ContentValues cv = new ContentValues();
-        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE, null);
+        cursor = db.rawQuery(" SELECT * FROM " + TABLE, null);
 
         if (cursor.moveToFirst()){
             do {

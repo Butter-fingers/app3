@@ -4,9 +4,7 @@
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="fill_parent"
@@ -28,7 +26,6 @@
         <androidx.viewpager.widget.ViewPager
 
             android:id="@+id/pager"
-            android:background="@color/white"
             android:layout_width="fill_parent"
             android:layout_height="0.0dip"
             android:layout_weight="1.0" />
@@ -44,5 +41,5 @@
                 android:layout_height="wrap_content"
                 app:menu="@menu/bottom_navigation_menu" />
         </FrameLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+
 </LinearLayout>

@@ -22,6 +22,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,22 +62,29 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<String> arrayList = db.getData(0);
                 ArrayList<String> arrayList2 = db.getData(0);
                 System.out.println("past2");
+                //remove null
+                arrayList.removeAll(Collections.singleton(null));
+                arrayList2.removeAll(Collections.singleton(null));
                 String driver = arrayList.get(0);
+
                 //String lane = arrayList2.get(0);
                 
                 if (arrayList2.isEmpty()) {
                     System.out.println("Register");
                     intent = new Intent(getApplicationContext(), RegisterUser.class);
                     startActivity(intent);
+                    finish();
                 } else if (driver != null) {
                     System.out.println("Dash" + arrayList) ;
                     intent = new Intent(getApplicationContext(), Dashboard.class);
                     intent.putExtra("user", 1);
                     startActivity(intent);
+                    finish();
                 } else if (driver == null) {
                     System.out.println("Driver");
                     intent = new Intent(getApplicationContext(), DriverMain.class);
                     startActivity(intent);
+                    finish();
                 }
             } catch (Exception e) {
                 System.out.println("auth !=null : " + e);
@@ -135,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 System.out.println("Verification successful");
+
             }
 
             @Override

@@ -7,8 +7,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
+
         <ListView
             android:textSize="30.0sp"
+            android:textColor="@color/black"
             android:id="@+id/fragment"
             android:longClickable="true"
             android:layout_width="fill_parent"

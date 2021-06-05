@@ -78,6 +78,8 @@ public class DriverMain extends AppCompatActivity {
         //always get from the db
         db = new Database(getApplicationContext());
         names = db.getData(6);
+        //remove the null
+        names.removeAll(Collections.singleton(null));
 
         user_NAME = names.get(0);
         rank_NAME = names.get(1);
@@ -85,8 +87,10 @@ public class DriverMain extends AppCompatActivity {
         //array = getIntent().getStringArrayListExtra("lane_names");
         db = new Database(getApplicationContext());
         array = db.getData(5);
+        array.removeAll(Collections.singleton(null));
 
-        for (int i = 0 ; i < columns; i++) {
+        // set array2 to be the size of array(lanes)
+        for (int i = 0 ; i < array.size(); i++) {
             ArrayList<String> arrayList = new ArrayList<>();
             array1 = arrayList;
             array2.add(arrayList);
@@ -219,14 +223,20 @@ public class DriverMain extends AppCompatActivity {
                 int sec = 0;
 
 
+                //check if array 2 has values inside/ not null
                 for (int i = 0; i < array.size(); i++ ) {
-                    boolean ch = !array2.get(i).isEmpty();
-                    if (ch) {
-                        sec = fi + 1;
+                    System.out.println("array: " + array + ", array2: "+ array2);
+                   // boolean ch = !array2.get(i).isEmpty();
+                    if (array2.get(i) != null) {
+
+                        System.out.println("not null: "+ sec + "i: " + i);
+                        sec ++;
+
                     }
 
                 }
 
+                System.out.println("array.sizess: "+ array.size() + ", sec: " + sec);
                 if ((array.size() - sec) == 0) {
                     //inputLayout.setBoxStrokeColor();
                     progressDialog.show();
@@ -242,6 +252,7 @@ public class DriverMain extends AppCompatActivity {
                     //db.addOne(array,5, false);
 
                     for ( int i =0; i < array.size(); i++) {
+                        System.out.println("username: " + user_NAME);
                        documentReference2 =  FirebaseFirestore.getInstance().collection("users").document(user_NAME).collection("rank").document(rank_NAME).collection(array.get(i));
                         HashMap map = new HashMap();
 

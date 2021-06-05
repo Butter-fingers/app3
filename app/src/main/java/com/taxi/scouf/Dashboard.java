@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Dashboard extends AppCompatActivity {
-    ArrayList<String> arrayList;
+    ArrayList<String> arrayListt;
     ClipboardManager clipboardManager;
     ArrayList<String> contents;
     Map data;
@@ -65,7 +65,7 @@ public class Dashboard extends AppCompatActivity {
         drivers = new ArrayList<>();
         lane_names = new ArrayList<>();
         new_drivers = new ArrayList<>();
-        arrayList = new ArrayList<>();
+        arrayListt = new ArrayList<>();
 
         listView = (ListView) findViewById(R.id.fragment);
         tabLayout = (TabLayout) findViewById(R.id.tab_Layout);
@@ -80,15 +80,20 @@ public class Dashboard extends AppCompatActivity {
         Database db = new Database(this);
         lane_names = db.getData(5);
 
-
-
-        for (int i = 0 ; i <lane_names.size(); i++) {
-            drivers.add(db.getData(i));
-        }
         //remove null
         lane_names.removeAll(Collections.singleton(null));
         drivers.removeAll(Collections.singleton(null));
 
+
+        for (int i = 0 ; i <lane_names.size(); i++) {
+            drivers.add(db.getData(i));
+            drivers.get(i).removeAll(Collections.singleton(null));
+        }
+        //remove null
+        lane_names.removeAll(Collections.singleton(null));
+
+
+        System.out.println("drivers: "+ drivers);
         preViewpager(viewPager, lane_names);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -179,7 +184,7 @@ public class Dashboard extends AppCompatActivity {
             bundle.putStringArrayList("drivers", drivers.get(i));
             bundle.putStringArrayList("lanes", lane_names);
             fragment_list.setArguments(bundle);
-            pageViewer.addFragment(fragment_list, arrayList.get(i));
+            pageViewer.addFragment(fragment_list, lane_names.get(i));
             fragment_list = new fragment_list();
 
         }

@@ -3,13 +3,13 @@
     <item
         android:id="@+id/copy"
         android:enabled="true"
-        android:icon="@color/cardview_shadow_start_color"
+        android:icon="@drawable/copy"
         android:title="@string/float_4"/>
 
     <item
         android:id="@+id/start"
         android:enabled="true"
-        android:icon="@color/cardview_shadow_start_color"
+        android:icon="@drawable/next"
         android:title="@string/float_1"/>
 
 
