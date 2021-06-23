@@ -87,6 +87,7 @@ public class DriverMain extends AppCompatActivity {
         //array = getIntent().getStringArrayListExtra("lane_names");
         db = new Database(getApplicationContext());
         array = db.getData(5);
+        //remove null
         array.removeAll(Collections.singleton(null));
 
         // set array2 to be the size of array(lanes)
@@ -113,8 +114,7 @@ public class DriverMain extends AppCompatActivity {
 
         }
 
-        // remove null
-        array.removeAll(Collections.singleton(null));
+
         //if array is more than 5 remove rest
         if (array.size() > 5) {
             for (int i =0; i < array.size(); i++) {
@@ -220,21 +220,28 @@ public class DriverMain extends AppCompatActivity {
             public void onClick(View v) {
                 int fi = 0;
 
-                int sec = 0;
+                int sec = -1;
 
 
-                //check if array 2 has values inside/ not null
-                for (int i = 0; i < array.size(); i++ ) {
-                    System.out.println("array: " + array + ", array2: "+ array2);
-                   // boolean ch = !array2.get(i).isEmpty();
-                    if (array2.get(i) != null) {
+                try {
+                    //check if array 2 has values inside/ not null
+                    sec = 0;
+                    for (int i = 0; i < array.size(); i++ ) {
+                        System.out.println("array: " + array + ", array2: "+ array2);
+                        // boolean ch = !array2.get(i).isEmpty(); or check if it > 0
+                        if (!array2.get(i).isEmpty()) {
 
-                        System.out.println("not null: "+ sec + "i: " + i);
-                        sec ++;
+                            System.out.println("not null: "+ sec + "i: " + i);
+                            sec ++;
+
+                        }
 
                     }
 
+                } catch (Exception e) {
+                    System.out.println("Drive next except: "+ e);
                 }
+
 
                 System.out.println("array.sizess: "+ array.size() + ", sec: " + sec);
                 if ((array.size() - sec) == 0) {

@@ -18,6 +18,7 @@
     <string name="float_2">SORT</string>
     <string name="float_3">LOCK</string>
     <string name="float_4">COPY</string>
+    <string name="float_5">Edit</string>
 
     <string name="hint1">Enter Phone Number</string>
     <string name="hint2">Verification Code</string>

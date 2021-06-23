@@ -7,6 +7,14 @@
         android:title="@string/float_4"/>
 
     <item
+        android:id="@+id/edit"
+        android:enabled="true"
+        android:icon="@drawable/edit"
+        android:title="@string/float_5"/>
+
+
+
+    <item
         android:id="@+id/start"
         android:enabled="true"
         android:icon="@drawable/next"

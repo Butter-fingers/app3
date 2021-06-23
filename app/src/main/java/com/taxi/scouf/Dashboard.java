@@ -15,6 +15,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -39,7 +41,7 @@ public class Dashboard extends AppCompatActivity {
     DocumentReference documentReference;
     ArrayList<ArrayList<String>> drivers;
     BottomNavigationView floatingActionButton;
-    //ExtendedFloatingActionButton floatingActionButton2;
+    BottomNavigationView buttons;
     ArrayList<String> lane_names;
     ListView listView;
     ArrayList<String> new_drivers;
@@ -72,7 +74,7 @@ public class Dashboard extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         viewPager = (ViewPager) findViewById(R.id.pager);
         floatingActionButton = (BottomNavigationView) findViewById(R.id.bottom_navi);
-        //floatingActionButton2 = (ExtendedFloatingActionButton) findViewById(R.id.floating);
+        buttons = (BottomNavigationView) findViewById(R.id.bottom_navi);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
@@ -96,6 +98,13 @@ public class Dashboard extends AppCompatActivity {
         System.out.println("drivers: "+ drivers);
         preViewpager(viewPager, lane_names);
         tabLayout.setupWithViewPager(viewPager);
+        buttons.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                System.out.println("Menu selected: "+ menu + "View: "+ v  );
+            }
+        });
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

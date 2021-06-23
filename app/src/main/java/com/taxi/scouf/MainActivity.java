@@ -60,27 +60,37 @@ public class MainActivity extends AppCompatActivity {
                 Database db = new Database(getApplicationContext());
                 System.out.println("past");
                 ArrayList<String> arrayList = db.getData(0);
-                ArrayList<String> arrayList2 = db.getData(0);
+                ArrayList<String> reg = db.getData(5);
                 System.out.println("past2");
                 //remove null
                 arrayList.removeAll(Collections.singleton(null));
-                arrayList2.removeAll(Collections.singleton(null));
-                String driver = arrayList.get(0);
+                reg.removeAll(Collections.singleton(null));
+                String driver = null;
+                try {
+
+                    driver = arrayList.get(0);
+                }catch (Exception e) {
+                    System.out.println("Exception: "+ e);
+                }
+
 
                 //String lane = arrayList2.get(0);
                 
-                if (arrayList2.isEmpty()) {
+                if (reg.isEmpty()) {
+                    //if the reg is empty then user needs to add
                     System.out.println("Register");
                     intent = new Intent(getApplicationContext(), RegisterUser.class);
                     startActivity(intent);
                     finish();
                 } else if (driver != null) {
+                    //if the driver is not empty then to the dash board
                     System.out.println("Dash" + arrayList) ;
                     intent = new Intent(getApplicationContext(), Dashboard.class);
                     intent.putExtra("user", 1);
                     startActivity(intent);
                     finish();
                 } else if (driver == null) {
+                    //if empty then edit
                     System.out.println("Driver");
                     intent = new Intent(getApplicationContext(), DriverMain.class);
                     startActivity(intent);
