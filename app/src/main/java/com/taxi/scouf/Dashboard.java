@@ -101,7 +101,14 @@ public class Dashboard extends AppCompatActivity {
         buttons.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                System.out.println("Menu selected: "+ menu + "View: "+ v  );
+
+            }
+        });
+        floatingActionButton.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected( MenuItem item) {
+                System.out.println("Menu selected: "+ item  );
+                return false;
             }
         });
 
@@ -191,6 +198,7 @@ public class Dashboard extends AppCompatActivity {
         for (int i = 0; i < lane_names.size(); i++) {
             bundle = new Bundle();
             bundle.putStringArrayList("drivers", drivers.get(i));
+            System.out.println("drivers from dash: "+ drivers);
             bundle.putStringArrayList("lanes", lane_names);
             fragment_list.setArguments(bundle);
             pageViewer.addFragment(fragment_list, lane_names.get(i));

@@ -26,6 +26,7 @@ public class fragment_list extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     ArrayAdapter adapter;
     ArrayList<String> arrayList;
+    int num = 0;
 
 
     // TODO: Rename and change types of parameters
@@ -63,9 +64,12 @@ public class fragment_list extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //num for removing more than 1, 1
+
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_list, container, false);
@@ -75,10 +79,13 @@ public class fragment_list extends Fragment {
             arrayList = getArguments().getStringArrayList("drivers");
             System.out.println("Arguments: "+ arrayList);
             //put in numbers
-            for (int i = 0; i < arrayList.size(); i++ ) {
-                arrayList.set(i,(i+1) + ". " +arrayList.get(i));
+            if (num < 1) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    arrayList.set(i, (i + 1) + ". " + arrayList.get(i));
+                }
             }
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_2, arrayList);
+            num++;
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, arrayList);
             //listView.setAdapter(
             listView.setAdapter(arrayAdapter);
 
@@ -95,6 +102,7 @@ public class fragment_list extends Fragment {
                 }
             });
         }
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        //View view = inflater.inflate(R.layout.fragment_list, container, false);
+        return view;
     }
 }
