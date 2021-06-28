@@ -85,6 +85,7 @@ public class sort extends AppCompatActivity {
                     intent.putExtra("item", position);
                     progressDialog.cancel();
                     startActivity(intent);
+                    finish();
 
                 } else {
                     Toast.makeText(sort.this, "Select a driver", Toast.LENGTH_SHORT).show();

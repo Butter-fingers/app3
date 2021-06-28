@@ -141,6 +141,11 @@ public class DriverMain extends AppCompatActivity {
                 driver_view.setText("");
                 drivers = new ArrayList<>();
 
+                if (update) {
+                    for (int i = 0; i < array2.size(); i++) {
+                        array2.get(i).removeAll(Collections.singleton(null));
+                    }
+                }
 
                 System.out.println("Array2: " + array2 + " :" + position);
                 if (array2.get(position).toString() != "null") {
@@ -251,7 +256,7 @@ public class DriverMain extends AppCompatActivity {
 
                     // add the drivers
                     for (int i = 0; i < array.size(); i++) {
-                        db.addOne(array2.get(i), i , false);
+                        db.addOne(array2.get(i), i , update);
                     }
 
                     // add the lanes

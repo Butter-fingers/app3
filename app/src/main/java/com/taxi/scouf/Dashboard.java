@@ -27,6 +27,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.DocumentReference;
 
+import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -104,16 +105,48 @@ public class Dashboard extends AppCompatActivity {
 
             }
         });
+
         floatingActionButton.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected( MenuItem item) {
                 System.out.println("Menu selected: "+ item  );
-                return false;
+
+                if (item.toString().equals("Edit")) {
+                    Intent intent = new Intent(Dashboard.this, DriverMain.class);
+                    intent.putExtra("update", true);
+                    startActivity(intent);
+
+                } else if (item.toString().equals("COPY")) {
+                    int current = viewPager.getCurrentItem();
+                    //copy
+                    manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clipData = ClipData.newPlainText("Names", drivers.get(current).toString());
+                    manager.setPrimaryClip(clipData);
+
+                    Toast.makeText(Dashboard.this, "Copied", Toast.LENGTH_SHORT).show();
+                    //
+
+                } else if (item.toString().equals("START")) {
+                    int pos = viewPager.getCurrentItem();
+                    try {
+                        Intent intent  = new Intent(Dashboard.this, sort.class);
+                        progressDialog.show();
+                        intent.putStringArrayListExtra("drivers", drivers.get(pos));
+                        intent.putExtra("item", pos);
+                        progressDialog.cancel();
+                        startActivity(intent);
+
+                    } catch (Exception e) {
+                        Toast.makeText(Dashboard.this, "Error submitting drivers", Toast.LENGTH_SHORT).show();
+                        System.out.println(e);
+                    }
+                }
+                return true;
             }
         });
 
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+       /* floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int current = viewPager.getCurrentItem();
@@ -132,7 +165,7 @@ public class Dashboard extends AppCompatActivity {
                 return clipboard;
             }
         });
-
+*/
         /*floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

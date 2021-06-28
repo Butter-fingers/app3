@@ -137,6 +137,7 @@ public class lock extends AppCompatActivity {
                 db.addOne(drivers_clone, position, true);
                 progressDialog.cancel();
                 startActivity(intent);
+                finish();
 
             }
         });

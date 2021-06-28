@@ -77,6 +77,7 @@ public class fragment_list extends Fragment {
 
         if (getArguments() != null) {
             arrayList = getArguments().getStringArrayList("drivers");
+            ArrayList another = arrayList;
             System.out.println("Arguments: "+ arrayList);
             //put in numbers
             if (num < 1) {
@@ -88,6 +89,7 @@ public class fragment_list extends Fragment {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, arrayList);
             //listView.setAdapter(
             listView.setAdapter(arrayAdapter);
+            arrayList = another;
 
         } else {
 

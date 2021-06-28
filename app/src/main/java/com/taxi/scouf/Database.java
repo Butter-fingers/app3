@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -50,11 +51,19 @@ public class Database extends SQLiteOpenHelper {
         int count;
 
         if (bool) {
+            SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+            cursor = sqLiteDatabase.rawQuery("SELECT DRIVERS"+ pos + " FROM "+ TABLE, null);
+            //set the row to null
+            //if (cursor.moveToFirst()) {
+                sqLiteDatabase.rawQuery("update "+TABLE+ " set DRIVERS" + pos +" = Null", null);
+            //}
 
+            System.out.println("update values: "+ arrayList1);
             for (int i = 0; i < arrayList.size(); i++) {
                 contentValues.put("DRIVERS"+ pos, arrayList1.get(i).toString());
                 database.update(TABLE, contentValues, "ID = "+ (i+1) , null);
             }
+            System.out.println();
         } else {
 
             for (int i = 0; i < arrayList.size(); i++) {
@@ -62,6 +71,11 @@ public class Database extends SQLiteOpenHelper {
                 database.insert(TABLE, null, contentValues);
             }
         }
+        if (bool) {
+            cursor.close();
+
+        }
+
         database.close();
         return true;
     }
@@ -82,6 +96,7 @@ public class Database extends SQLiteOpenHelper {
 
         cursor.close();
         db.close();
+        arrayList2.removeAll(Collections.singleton(null));
         return arrayList2;
 
     }
