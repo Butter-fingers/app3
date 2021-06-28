@@ -52,18 +52,23 @@ public class Database extends SQLiteOpenHelper {
 
         if (bool) {
             SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-            cursor = sqLiteDatabase.rawQuery("SELECT DRIVERS"+ pos + " FROM "+ TABLE, null);
+            //cursor = sqLiteDatabase.rawQuery("SELECT DRIVERS"+ pos + " FROM "+ TABLE, null);
             //set the row to null
             //if (cursor.moveToFirst()) {
-                sqLiteDatabase.rawQuery("update "+TABLE+ " set DRIVERS" + pos +" = Null", null);
+            for (int i = 0 ; i < arrayList.size(); i++) {
+                String name = arrayList.get(i).toString();
+
+            }
+            sqLiteDatabase.rawQuery("UPDATE " + TABLE + " SET  DRIVERS" + pos + " = NULL", null);
             //}
 
             System.out.println("update values: "+ arrayList1);
-            for (int i = 0; i < arrayList.size(); i++) {
+            /*for (int i = 0; i < arrayList.size(); i++) {
                 contentValues.put("DRIVERS"+ pos, arrayList1.get(i).toString());
                 database.update(TABLE, contentValues, "ID = "+ (i+1) , null);
-            }
-            System.out.println();
+            }*/
+
+            sqLiteDatabase.close();
         } else {
 
             for (int i = 0; i < arrayList.size(); i++) {
@@ -72,11 +77,12 @@ public class Database extends SQLiteOpenHelper {
             }
         }
         if (bool) {
-            cursor.close();
+            //cursor.close();
 
         }
 
         database.close();
+
         return true;
     }
 
