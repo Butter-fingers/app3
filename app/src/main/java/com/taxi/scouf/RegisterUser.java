@@ -134,8 +134,8 @@ public class RegisterUser extends AppCompatActivity {
                     intent.putStringArrayListExtra("lane_names", lane_NAMES);
                     //put em in the database
                     Database db = new Database(getApplicationContext());
-                    db.addOne(lane_names,5,false);
-                    db.addOne(names,6,false);
+                    db.addOne(lane_names,0,0);
+                    db.addOne(names,6,6);
                     progressDialog.cancel();
 
                     startActivity(intent);

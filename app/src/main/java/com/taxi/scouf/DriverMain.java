@@ -40,7 +40,7 @@ public class DriverMain extends AppCompatActivity {
     private CollectionReference documentReference2;
     TextInputEditText drive_NAME;
     TextView driver_view;
-    ArrayList<String> drivers, names;
+    ArrayList<String> drivers, names, lane;
     TextInputLayout inputLayout;
     MaterialButton next;
     int number;
@@ -77,16 +77,18 @@ public class DriverMain extends AppCompatActivity {
         columns = 5;
         //always get from the db
         db = new Database(getApplicationContext());
-        names = db.getData(6);
+
+        names = db.getData(0);
+        lane = db.getData(6);
         //remove the null
-        names.removeAll(Collections.singleton(null));
+        //names.removeAll(Collections.singleton(null));
 
         user_NAME = names.get(0);
         rank_NAME = names.get(1);
         update = getIntent().getBooleanExtra("update", false);
         //array = getIntent().getStringArrayListExtra("lane_names");
         db = new Database(getApplicationContext());
-        array = db.getData(5);
+        array = db.getData(6);
         //remove null
         array.removeAll(Collections.singleton(null));
 
@@ -103,7 +105,7 @@ public class DriverMain extends AppCompatActivity {
 
             db = new Database(getApplicationContext());
 
-            array = db.getData(5);
+            array = db.getData(6);
             //remove null
             array.removeAll(Collections.singleton(null));
 
@@ -256,7 +258,7 @@ public class DriverMain extends AppCompatActivity {
 
                     // add the drivers
                     for (int i = 0; i < array.size(); i++) {
-                        db.addOne(array2.get(i), i , update);
+                        db.addOne(array2.get(i), i+1 , i+1);
                     }
 
                     // add the lanes

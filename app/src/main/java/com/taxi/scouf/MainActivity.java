@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 Database db = new Database(getApplicationContext());
                 System.out.println("past");
                 ArrayList<String> arrayList = db.getData(0);
-                ArrayList<String> reg = db.getData(5);
+                ArrayList<String> reg = db.getData(6);
                 System.out.println("past2");
                 //remove null
                 arrayList.removeAll(Collections.singleton(null));
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 String driver = null;
                 try {
 
-                    driver = arrayList.get(0);
+                    driver = arrayList.get(1);
                 }catch (Exception e) {
                     System.out.println("Exception: "+ e);
                 }
