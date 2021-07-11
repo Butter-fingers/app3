@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
 
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+        //FirebaseAuth.getInstance().getCurrentUser() != null
+        if (true) {
 
             try {
                 Intent intent ;
@@ -109,8 +110,13 @@ public class MainActivity extends AppCompatActivity {
                     String num = phone.getText().toString();
                     String code = ccps.getSelectedCountryCodeWithPlus();
                     // check if the country code is selected
+                    Intent var2 = new Intent(getApplicationContext(), RegisterUser.class);
+                    //progressDialog.cancel();
+                    startActivity(var2);
+                    finish();
 
-                    if (!num.isEmpty() ) {
+
+                    /*if (!num.isEmpty() ) {
                         //country code plus the number
                         realNum = code + num ;
 
@@ -118,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(MainActivity.this, "Enter Number", Toast.LENGTH_SHORT).show();
 
-                    }
+                    }*/
                 }
             });
 

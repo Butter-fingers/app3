@@ -38,13 +38,13 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         System.out.println("onCreate");
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE0 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN0 + " TEXT )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE1 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN1 + " TEXT  )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE2 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN2 + " TEXT  )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE3 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN3 + " TEXT  )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE4 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN4 + " TEXT  )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE5 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN5 + " TEXT  )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE6 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN6 + " TEXT )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE0 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN0 + " TEXT )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE1 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN1 + " TEXT  )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE2 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN2 + " TEXT  )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE3 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN3 + " TEXT  )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE4 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN4 + " TEXT  )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE5 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN5 + " TEXT  )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE6 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN6 + " TEXT )");
     }
 
     @Override
@@ -53,17 +53,37 @@ public class Database extends SQLiteOpenHelper {
     }
 
     
-    public Boolean addOne(ArrayList arrayList, int pos, int table){
+    public Boolean addOne(ArrayList arrayList, int pos, int table, boolean update){
 
-        SQLiteDatabase database = this.getWritableDatabase();
+        SQLiteDatabase database = getWritableDatabase();
+
         ContentValues contentValues = new ContentValues();
 
 
 
         System.out.println("done");
-        for (int i = 0; i < arrayList.size(); i++) {
-            contentValues.put("DRIVERS" + pos, arrayList.get(i).toString());
-            database.insert("TABLE"+table, null, contentValues);
+        if (!update) {
+            for (int i = 0; i < arrayList.size(); i++) {
+                contentValues.put("DRIVERS" + pos, arrayList.get(i).toString());
+                database.insert("DRIVER" + table, null, contentValues);
+            }
+        } else {
+
+
+            //get data of same pos to delete and replace w/ new one
+            ArrayList<String> old = getData(pos);
+
+            String query = "DELETE FROM DRIVER"+table + " WHERE ID = ";
+            //delete
+            for (int j = 0; j < old.size() ; j++) {
+                database.rawQuery(query+(j+1),null,null);
+            }
+
+            //add new
+            for (int i = 0; i < arrayList.size(); i++) {
+                contentValues.put("DRIVERS" + pos, arrayList.get(i).toString());
+                database.insert("DRIVER" + table, null, contentValues);
+            }
         }
 
 
@@ -142,7 +162,7 @@ public class Database extends SQLiteOpenHelper {
         ArrayList<String> arrayList2 = new ArrayList();
         SQLiteDatabase db = getReadableDatabase();
         ContentValues cv = new ContentValues();
-        cursor = db.rawQuery(" SELECT * FROM " + "TABLE"+pos, null);
+        cursor = db.rawQuery(" SELECT * FROM " + "DRIVER"+pos, null);
 
         if (cursor.moveToFirst()){
             do {
@@ -158,6 +178,7 @@ public class Database extends SQLiteOpenHelper {
         return arrayList2;
 
     }
+
 
 
 }

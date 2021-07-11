@@ -133,12 +133,14 @@ public class RegisterUser extends AppCompatActivity {
                     intent.putExtra("laneSize", lane_size);
                     intent.putStringArrayListExtra("lane_names", lane_NAMES);
                     //put em in the database
-                    Database db = new Database(getApplicationContext());
-                    db.addOne(lane_names,0,0);
-                    db.addOne(names,6,6);
-                    progressDialog.cancel();
+                    Database db = new Database(RegisterUser.this);
+                    //db.onCreate(db);
+                    db.addOne(lane_names,5,5, false);
+                    db.addOne(names,6,6, false);
+                    //progressDialog.cancel();
 
                     startActivity(intent);
+                    finish();
                 } else {
 
                     Toast.makeText(RegisterUser.this, "Please fill up empty fields", Toast.LENGTH_SHORT).show();

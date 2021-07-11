@@ -78,7 +78,7 @@ public class DriverMain extends AppCompatActivity {
         //always get from the db
         db = new Database(getApplicationContext());
 
-        names = db.getData(0);
+        names = db.getData(5);
         lane = db.getData(6);
         //remove the null
         //names.removeAll(Collections.singleton(null));
@@ -88,7 +88,7 @@ public class DriverMain extends AppCompatActivity {
         update = getIntent().getBooleanExtra("update", false);
         //array = getIntent().getStringArrayListExtra("lane_names");
         db = new Database(getApplicationContext());
-        array = db.getData(6);
+        array = db.getData(5);
         //remove null
         array.removeAll(Collections.singleton(null));
 
@@ -105,7 +105,7 @@ public class DriverMain extends AppCompatActivity {
 
             db = new Database(getApplicationContext());
 
-            array = db.getData(6);
+            array = db.getData(5);
             //remove null
             array.removeAll(Collections.singleton(null));
 
@@ -257,15 +257,23 @@ public class DriverMain extends AppCompatActivity {
                     Database db = new Database(getApplicationContext());
 
                     // add the drivers
-                    for (int i = 0; i < array.size(); i++) {
-                        db.addOne(array2.get(i), i+1 , i+1);
+                    if (!update) {
+                        for (int i = 0; i < array.size(); i++) {
+                            db.addOne(array2.get(i), i , i, false);
+                        }
+                    } else {
+                        //update
                     }
+
 
                     // add the lanes
 
                     //db.addOne(array,5, false);
+                    Intent var3 = new Intent(getApplicationContext(), Dashboard.class);
+                    progressDialog.cancel();
+                    startActivity(var3);
 
-                    for ( int i =0; i < array.size(); i++) {
+                    /*for ( int i =0; i < array.size(); i++) {
                         System.out.println("username: " + user_NAME);
                        documentReference2 =  FirebaseFirestore.getInstance().collection("users").document(user_NAME).collection("rank").document(rank_NAME).collection(array.get(i));
                         HashMap map = new HashMap();
@@ -301,7 +309,7 @@ public class DriverMain extends AppCompatActivity {
                             documentReference2.add(map);
                         }
 
-                    }
+                    }*/
 
                 } else {
                     Toast.makeText(DriverMain.this, "Add Drivers to all lanes", Toast.LENGTH_SHORT).show();
