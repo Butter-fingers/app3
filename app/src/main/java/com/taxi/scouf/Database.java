@@ -61,14 +61,16 @@ public class Database extends SQLiteOpenHelper {
         String query = "DELETE FROM DRIVER"+pos + " WHERE ID = ";
         //delete
         for (int j = 0; j < old.size() ; j++) {
-          Cursor cursor =  ds.rawQuery(query+(j+1),null,null);
+            ds.delete("DRIVER"+pos, "ID = "+(j+1), null);
+          //Cursor cursor =  ds.rawQuery(query+(j+1),null,null);
 
-          if (cursor.moveToFirst()) {
+          /*if (cursor.moveToFirst()) {
               System.out.println("Moved");
           } else {
               System.out.println("Can't");
-          }
+          }*/
         }
+
 
         //add new
         for (int i = 0; i < newA.size(); i++) {
