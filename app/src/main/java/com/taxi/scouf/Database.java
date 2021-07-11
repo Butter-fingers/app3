@@ -52,8 +52,36 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    public Boolean delete(ArrayList newA, int pos) {
+        SQLiteDatabase ds = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //get data of same pos to delete and replace w/ new one
+        ArrayList<String> old = getData(pos);
+
+        String query = "DELETE FROM DRIVER"+pos + " WHERE ID = ";
+        //delete
+        for (int j = 0; j < old.size() ; j++) {
+          Cursor cursor =  ds.rawQuery(query+(j+1),null,null);
+
+          if (cursor.moveToFirst()) {
+              System.out.println("Moved");
+          } else {
+              System.out.println("Can't");
+          }
+        }
+
+        //add new
+        for (int i = 0; i < newA.size(); i++) {
+            contentValues.put("DRIVERS" + pos, newA.get(i).toString());
+            ds.insert("DRIVER" + pos, null, contentValues);
+        }
+
+        ds.close();
+        return true;
+    }
+
     
-    public Boolean addOne(ArrayList arrayList, int pos, int table, boolean update){
+    public Boolean addOne(ArrayList arrayList, int pos, int table){
 
         SQLiteDatabase database = getWritableDatabase();
 
@@ -62,33 +90,17 @@ public class Database extends SQLiteOpenHelper {
 
 
         System.out.println("done");
-        if (!update) {
+
             for (int i = 0; i < arrayList.size(); i++) {
                 contentValues.put("DRIVERS" + pos, arrayList.get(i).toString());
                 database.insert("DRIVER" + table, null, contentValues);
             }
-        } else {
-
-
-            //get data of same pos to delete and replace w/ new one
-            ArrayList<String> old = getData(pos);
-
-            String query = "DELETE FROM DRIVER"+table + " WHERE ID = ";
-            //delete
-            for (int j = 0; j < old.size() ; j++) {
-                database.rawQuery(query+(j+1),null,null);
-            }
-
-            //add new
-            for (int i = 0; i < arrayList.size(); i++) {
-                contentValues.put("DRIVERS" + pos, arrayList.get(i).toString());
-                database.insert("DRIVER" + table, null, contentValues);
-            }
-        }
 
 
 
-        database.close();
+
+
+        //database.close();
         //sqLiteDatabase.close();
         return true;
         /*ArrayList arrayList1 = (ArrayList) arrayList.clone();

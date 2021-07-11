@@ -259,10 +259,13 @@ public class DriverMain extends AppCompatActivity {
                     // add the drivers
                     if (!update) {
                         for (int i = 0; i < array.size(); i++) {
-                            db.addOne(array2.get(i), i , i, false);
+                            db.addOne(array2.get(i), i , i);
                         }
                     } else {
                         //update
+                        for (int i = 0; i < array.size(); i++) {
+                            db.delete(array2.get(i), i);
+                        }
                     }
 
 

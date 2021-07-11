@@ -134,7 +134,7 @@ public class lock extends AppCompatActivity {
                 intent.putStringArrayListExtra("new", drivers_clone);
                 intent.putExtra("item", position);
                 Database db = new Database(getApplicationContext());
-                db.addOne(drivers_clone, position, position, true);
+                db.delete(drivers_clone, position);
                 progressDialog.cancel();
                 startActivity(intent);
                 finish();

@@ -135,8 +135,8 @@ public class RegisterUser extends AppCompatActivity {
                     //put em in the database
                     Database db = new Database(RegisterUser.this);
                     //db.onCreate(db);
-                    db.addOne(lane_names,5,5, false);
-                    db.addOne(names,6,6, false);
+                    db.addOne(lane_names,5,5);
+                    db.addOne(names,6,6);
                     //progressDialog.cancel();
 
                     startActivity(intent);
