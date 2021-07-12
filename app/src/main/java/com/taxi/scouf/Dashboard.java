@@ -189,6 +189,14 @@ public class Dashboard extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onDestroy() {
+        Database db = new Database(this);
+        db.close();
+        super.onDestroy();
+    }
+
+
     public class PageViewer extends FragmentPagerAdapter {
 
         ArrayList<String> arrayList;

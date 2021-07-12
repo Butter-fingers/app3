@@ -47,6 +47,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE6 + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT,  " + COLUMN6 + " TEXT )");
     }
 
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -58,14 +60,21 @@ public class Database extends SQLiteOpenHelper {
         //get data of same pos to delete and replace w/ new one
         ArrayList<String> old = getData(pos);
 
-        String query = "DELETE FROM DRIVER"+pos + " WHERE ID = ";
+
         //delete
         for (int j = 0; j < old.size() ; j++) {
-            ds.delete("DRIVER"+pos, "ID = "+(j+1), null);
-          //Cursor cursor =  ds.rawQuery(query+(j+1),null,null);
+            String q2 = "SELECT * FROM DRIVER"+pos ;
 
-          /*if (cursor.moveToFirst()) {
+            //String query = "DELETE FROM DRIVER"+pos + " WHERE DRIVERS"+pos + " = '" +old.get(j) + "';";
+            //ds.delete("DRIVER"+pos, "ID = "+(j+1), null);
+            // ds.rawQuery(query,null,null);
+            String whereArgs[] = {old.get(j)};
+            String whereClause = "DRIVERS"+pos+"=?";
+            ds.delete("DRIVER"+pos,whereClause,whereArgs);
+
+         /* if (cursor.moveToFirst()) {
               System.out.println("Moved");
+
           } else {
               System.out.println("Can't");
           }*/
@@ -78,11 +87,14 @@ public class Database extends SQLiteOpenHelper {
             ds.insert("DRIVER" + pos, null, contentValues);
         }
 
-        ds.close();
+       // ds.close();
+        cursor.close();
         return true;
     }
 
-    
+
+
+
     public Boolean addOne(ArrayList arrayList, int pos, int table){
 
         SQLiteDatabase database = getWritableDatabase();
@@ -187,7 +199,7 @@ public class Database extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
+        //db.close();
         arrayList2.removeAll(Collections.singleton(null));
         return arrayList2;
 
