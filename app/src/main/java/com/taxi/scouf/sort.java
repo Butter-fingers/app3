@@ -1,10 +1,12 @@
 package com.taxi.scouf;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -27,6 +29,7 @@ public class sort extends AppCompatActivity {
     int position;
     ProgressDialog progressDialog;
     RadioGroup radioGroup;
+    Database db;
     int Selected;
 
 
@@ -39,11 +42,15 @@ public class sort extends AppCompatActivity {
         extendedFloatingActionButton = (BottomNavigationView) findViewById(R.id.float__1);
         drivers = new ArrayList<>();
         drivers_clone = new ArrayList<>();
+
+        //database
+        db = new Database(this);
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading..");
         number_line = 1;
-        drivers = getIntent().getStringArrayListExtra("drivers");
+
         position = getIntent().getExtras().getInt("item");
+        drivers = db.getData(position);
 
         buttons = new RadioButton[drivers.size()];
 
@@ -61,10 +68,9 @@ public class sort extends AppCompatActivity {
                 //position = checkedId;
             }
         });
-
-       extendedFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+        extendedFloatingActionButton.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
                 progressDialog.show();
                 drivers_clone = (ArrayList<String>) drivers.clone();
                 int selected = radioGroup.getCheckedRadioButtonId();
@@ -90,6 +96,15 @@ public class sort extends AppCompatActivity {
                 } else {
                     Toast.makeText(sort.this, "Select a driver", Toast.LENGTH_SHORT).show();
                 }
+
+                return true;
+            }
+        });
+
+       extendedFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               System.out.println("next lock");
 
 
            }

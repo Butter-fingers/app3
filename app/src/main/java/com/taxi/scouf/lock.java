@@ -1,10 +1,12 @@
 package com.taxi.scouf;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Switch;
@@ -69,10 +71,9 @@ public class lock extends AppCompatActivity {
             number_line++;
         }
 
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        floatingActionButton.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onNavigationItemSelected(MenuItem item) {
                 for (int i = 0 ; i< drivers.size(); i++) {
 
                     dialog.show();
@@ -139,8 +140,11 @@ public class lock extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
+                return true;
             }
         });
+
+
 
 
 

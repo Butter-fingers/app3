@@ -145,9 +145,13 @@ public class DriverMain extends AppCompatActivity {
                 drivers = new ArrayList<>();
 
                 if (update) {
+                    //add data from database
                     for (int i = 0; i < array2.size(); i++) {
                         array2.get(i).removeAll(Collections.singleton(null));
                     }
+
+                    //set remove button visible
+                    remove.setVisibility(View.VISIBLE);
                 }
 
                 System.out.println("Array2: " + array2 + " :" + position);

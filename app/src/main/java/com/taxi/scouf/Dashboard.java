@@ -84,8 +84,8 @@ public class Dashboard extends AppCompatActivity {
         lane_names = db.getData(5);
 
         //remove null
-        lane_names.removeAll(Collections.singleton(null));
-        drivers.removeAll(Collections.singleton(null));
+        //lane_names.removeAll(Collections.singleton(null));
+        //drivers.removeAll(Collections.singleton(null));
 
 
         for (int i = 0 ; i <lane_names.size(); i++) {
