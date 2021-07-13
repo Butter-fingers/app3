@@ -27,10 +27,9 @@ public class sort extends AppCompatActivity {
     BottomNavigationView extendedFloatingActionButton;
     int number_line;
     int position;
-    ProgressDialog progressDialog;
     RadioGroup radioGroup;
     Database db;
-    int Selected;
+
 
 
     @Override
@@ -38,8 +37,8 @@ public class sort extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sort);
 
-        radioGroup = (RadioGroup) findViewById(R.id.radio_1);
-        extendedFloatingActionButton = (BottomNavigationView) findViewById(R.id.float__1);
+        radioGroup =  findViewById(R.id.radio_1);
+        extendedFloatingActionButton =  findViewById(R.id.float__1);
         drivers = new ArrayList<>();
         drivers_clone = new ArrayList<>();
 
@@ -73,7 +72,7 @@ public class sort extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 progressDialog.show();
                 //drivers_clone = (ArrayList<String>) drivers.clone();
-                int selected = radioGroup.getCheckedRadioButtonId();
+                int selected = radioGroup.getCheckedRadioButtonId() - 1;
                 System.out.println("Selected: "+ selected);
                 int AL = drivers.size();
                 String selected_ = drivers.get(selected);
@@ -90,7 +89,9 @@ public class sort extends AppCompatActivity {
                 }
 
                 for (int k = 0; k < drivers.size(); k++) {
-                    if (!(k == selected) && !(k > selected)) {
+                    if (!(k > selected)) {
+                        //3 4 5 1 6//5// 6 3 4 5
+                        //1 6 3 4 5
 
                         sort.add(drivers.get(k));
                     }
