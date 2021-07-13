@@ -76,6 +76,7 @@ public class fragment_list extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.fragment);
 
         if (getArguments() != null) {
+            //arrayList.clear();
             arrayList = getArguments().getStringArrayList("drivers");
             ArrayList another = arrayList;
             System.out.println("Arguments: "+ arrayList);
@@ -90,6 +91,7 @@ public class fragment_list extends Fragment {
             //listView.setAdapter(
             listView.setAdapter(arrayAdapter);
             arrayList = another;
+
 
         } else {
 

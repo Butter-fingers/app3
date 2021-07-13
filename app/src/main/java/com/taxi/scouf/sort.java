@@ -72,11 +72,45 @@ public class sort extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 progressDialog.show();
-                drivers_clone = (ArrayList<String>) drivers.clone();
+                //drivers_clone = (ArrayList<String>) drivers.clone();
                 int selected = radioGroup.getCheckedRadioButtonId();
+                System.out.println("Selected: "+ selected);
                 int AL = drivers.size();
+                String selected_ = drivers.get(selected);
+                ArrayList<String> sort = new ArrayList<>();
+
 
                 if (selected >= 0) {
+                for (int k = 0; k < drivers.size(); k++) {
+                    if (!(k == selected) && !(k > selected)) {
+
+                    } else if ( k > selected) {
+                        sort.add(drivers.get(k));
+                    }
+                }
+
+                for (int k = 0; k < drivers.size(); k++) {
+                    if (!(k == selected) && !(k > selected)) {
+
+                        sort.add(drivers.get(k));
+                    }
+                }
+
+                //next
+                    Intent intent = new Intent(getApplicationContext(), lock.class);
+                    intent.putStringArrayListExtra("drivers", sort);
+                    intent.putExtra("item", position);
+                    progressDialog.cancel();
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(sort.this, "Select a driver", Toast.LENGTH_SHORT).show();
+                }
+
+                //last one
+                sort.add(selected_);
+
+                /*if (selected >= 0) {
 
                     for (int i = 0; i < AL - selected; i++) {
                         drivers_clone.set(i, drivers.get(selected +i ));
@@ -95,7 +129,7 @@ public class sort extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(sort.this, "Select a driver", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
                 return true;
             }

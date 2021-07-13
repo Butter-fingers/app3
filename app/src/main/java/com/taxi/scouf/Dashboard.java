@@ -135,6 +135,7 @@ public class Dashboard extends AppCompatActivity {
                         intent.putExtra("item", pos);
                         progressDialog.cancel();
                         startActivity(intent);
+                        finish();
 
                     } catch (Exception e) {
                         Toast.makeText(Dashboard.this, "Error submitting drivers", Toast.LENGTH_SHORT).show();

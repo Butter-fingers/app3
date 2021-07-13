@@ -51,8 +51,8 @@ public class lock extends AppCompatActivity {
         drivers_clone = new ArrayList<>();
         drivers_clone2 = new ArrayList<>();
         number_line = 1;
-        ProgressDialog dialog = new ProgressDialog(this);
-        dialog.setMessage("Loading...");
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
 
         checked = 0 ;
         // the alg should be int the listener
@@ -81,6 +81,7 @@ public class lock extends AppCompatActivity {
                 //put it last
                 //**brilliant idea**//
                 //get checked drivers
+                progressDialog.show();
                 ArrayList<String> checked2 = new ArrayList<>();
                 for(int k = 0; k < drivers.size(); k++) {
                     if(switches[k].isChecked()) {
@@ -183,6 +184,7 @@ public class lock extends AppCompatActivity {
                 intent.putExtra("item", position);
                 Database db = new Database(getApplicationContext());
                 db.delete(drivers, position);
+                //db.close();
                 progressDialog.cancel();
                 startActivity(intent);
                 finish();
