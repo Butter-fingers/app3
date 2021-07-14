@@ -72,6 +72,7 @@ public class sort extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 progressDialog.show();
                 //drivers_clone = (ArrayList<String>) drivers.clone();
+                //add a try catch hr
                 int selected = radioGroup.getCheckedRadioButtonId() - 1;
                 System.out.println("Selected: "+ selected);
                 int AL = drivers.size();
