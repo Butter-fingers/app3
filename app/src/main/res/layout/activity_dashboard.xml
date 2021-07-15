@@ -30,6 +30,18 @@
             android:layout_height="0.0dip"
             android:layout_weight="1.0" />
 
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6764228634998526/7283875605">
+    </com.google.android.gms.ads.AdView>
+
+
         <FrameLayout
             android:id="@+id/bottom_tab"
             android:layout_width="fill_parent"

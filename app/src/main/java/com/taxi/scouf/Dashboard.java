@@ -21,6 +21,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -76,6 +81,20 @@ public class Dashboard extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         floatingActionButton = (BottomNavigationView) findViewById(R.id.bottom_navi);
         buttons = (BottomNavigationView) findViewById(R.id.bottom_navi);
+
+        AdView adView = new AdView(getApplicationContext());
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
