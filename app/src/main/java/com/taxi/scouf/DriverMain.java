@@ -145,7 +145,7 @@ public class DriverMain extends AppCompatActivity {
                 drivers = new ArrayList<>();
 
                 if (update) {
-                    //add data from database
+                    //add/get data from database
                     for (int i = 0; i < array2.size(); i++) {
                         array2.get(i).removeAll(Collections.singleton(null));
                     }

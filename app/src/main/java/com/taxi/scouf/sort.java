@@ -29,6 +29,8 @@ public class sort extends AppCompatActivity {
     int position;
     RadioGroup radioGroup;
     Database db;
+    int selected;
+    String selected_;
 
 
 
@@ -57,6 +59,7 @@ public class sort extends AppCompatActivity {
             buttons[i] = new RadioButton(getApplicationContext());
             buttons[i].setText(number_line + ". "+ drivers.get(i));
             radioGroup.addView(buttons[i]);
+            buttons[i].setId(i+1);
             number_line++;
         }
 
@@ -73,10 +76,12 @@ public class sort extends AppCompatActivity {
                 progressDialog.show();
                 //drivers_clone = (ArrayList<String>) drivers.clone();
                 //add a try catch hr
-                int selected = radioGroup.getCheckedRadioButtonId() - 1;
-                System.out.println("Selected: "+ selected);
+                radioGroup =  findViewById(R.id.radio_1);
+                selected = radioGroup.getCheckedRadioButtonId();
+                selected = selected - 1;
+                System.out.println("Selected: "+ selected + " Size "+drivers.size());
                 int AL = drivers.size();
-                String selected_ = drivers.get(selected);
+                selected_ = drivers.get(selected);
                 ArrayList<String> sort = new ArrayList<>();
 
 
