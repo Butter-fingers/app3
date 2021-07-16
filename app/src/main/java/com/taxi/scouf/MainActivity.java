@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         ccps = (CountryCodePicker) findViewById(R.id.ccp);
         phone = (TextInputEditText) findViewById(R.id.phone);
-        next = (Button) findViewById(R.id.button);
+        next = (Button) findViewById(R.id.button11);
         //realNum = phone.getText().toString();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");

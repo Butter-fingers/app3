@@ -141,8 +141,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30.0dip">
 
-            <Button
-                android:id="@+id/button"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button22"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50.0dip"

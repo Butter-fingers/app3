@@ -67,7 +67,7 @@ public class DriverMain extends AppCompatActivity {
         driver_view = (TextView) findViewById(R.id.driver_view);
         inputLayout = (TextInputLayout) findViewById(R.id.input_layout);
         add = (MaterialButton) findViewById(R.id.add);
-        next = (MaterialButton) findViewById(R.id.button);
+        next = (MaterialButton) findViewById(R.id.button22);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         remove = (MaterialButton) findViewById(R.id.removes);
