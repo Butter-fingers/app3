@@ -55,6 +55,6 @@
             android:layout_gravity="bottom"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/next" />
+            app:menu="@menu/loc" />
     </FrameLayout>
 </LinearLayout>

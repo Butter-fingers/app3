@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         ccps = (CountryCodePicker) findViewById(R.id.ccp);
         phone = (TextInputEditText) findViewById(R.id.phone);
         next = (Button) findViewById(R.id.button);
@@ -52,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
 
-        //FirebaseAuth.getInstance().getCurrentUser() != null
-        if (true) {
+
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
             try {
                 Intent intent ;
@@ -109,14 +110,10 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String num = phone.getText().toString();
                     String code = ccps.getSelectedCountryCodeWithPlus();
-                    // check if the country code is selected
-                    Intent var2 = new Intent(getApplicationContext(), RegisterUser.class);
-                    //progressDialog.cancel();
-                    startActivity(var2);
-                    finish();
 
 
-                    /*if (!num.isEmpty() ) {
+
+                    if (!num.isEmpty() ) {
                         //country code plus the number
                         realNum = code + num ;
 
@@ -124,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(MainActivity.this, "Enter Number", Toast.LENGTH_SHORT).show();
 
-                    }*/
+                    }
                 }
             });
 
@@ -178,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("id", s);
 
                 startActivity(intent);
+                finish();
             }
         };
         PhoneAuthOptions options =

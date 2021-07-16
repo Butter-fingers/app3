@@ -176,7 +176,7 @@
                 android:textStyle="normal"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:id="@id/lane_view"
+                android:id="@+id/lane_view"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text=""

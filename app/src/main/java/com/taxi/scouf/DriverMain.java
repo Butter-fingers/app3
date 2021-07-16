@@ -277,11 +277,9 @@ public class DriverMain extends AppCompatActivity {
                     // add the lanes
 
                     //db.addOne(array,5, false);
-                    Intent var3 = new Intent(getApplicationContext(), Dashboard.class);
-                    progressDialog.cancel();
-                    startActivity(var3);
 
-                    /*for ( int i =0; i < array.size(); i++) {
+
+                    for ( int i =0; i < array.size(); i++) {
                         System.out.println("username: " + user_NAME);
                        documentReference2 =  FirebaseFirestore.getInstance().collection("users").document(user_NAME).collection("rank").document(rank_NAME).collection(array.get(i));
                         HashMap map = new HashMap();
@@ -317,7 +315,7 @@ public class DriverMain extends AppCompatActivity {
                             documentReference2.add(map);
                         }
 
-                    }*/
+                    }
 
                 } else {
                     Toast.makeText(DriverMain.this, "Add Drivers to all lanes", Toast.LENGTH_SHORT).show();

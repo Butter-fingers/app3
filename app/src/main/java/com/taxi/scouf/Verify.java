@@ -94,6 +94,7 @@ public class Verify extends AppCompatActivity {
                 Intent var2 = new Intent(getApplicationContext(), RegisterUser.class);
                 progressDialog.cancel();
                 startActivity(var2);
+                finish();
 
             }
         }).addOnFailureListener(new OnFailureListener() {

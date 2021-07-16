@@ -68,7 +68,16 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
 
+
+            }
+        });
+        AdView adView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         contents = new ArrayList<>();
         drivers = new ArrayList<>();
         lane_names = new ArrayList<>();
@@ -82,19 +91,23 @@ public class Dashboard extends AppCompatActivity {
         floatingActionButton = (BottomNavigationView) findViewById(R.id.bottom_navi);
         buttons = (BottomNavigationView) findViewById(R.id.bottom_navi);
 
-        AdView adView = new AdView(getApplicationContext());
+        //AdView adView = new AdView(getApplicationContext());
+        //AdManagerAdView adManagerAdView = new AdManagerAdView(this);
+
+        //AdView adView ;
+
+        //adView.setAdSize(AdSize.BANNER);
+
+        //adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+// TODO: Add adView to your view hierarchy.
 
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
 
-            }
-        });
 
-        adView = findViewById(R.id.adView);
+
+        /*AdView adView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        adView.loadAd(adRequest);*/
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
